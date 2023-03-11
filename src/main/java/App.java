@@ -3,30 +3,24 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class App {
     public static void main(String[] args) {
+        // HelloWorld
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
-        HelloWorld bean =
-                applicationContext.getBean("helloworld", HelloWorld.class);
-        System.out.println(bean.getMessage());
 
-        ApplicationContext applicationContext1 =
-                new AnnotationConfigApplicationContext(AppConfig.class);
-        HelloWorld bean1 =
-                applicationContext1.getBean("helloworld", HelloWorld.class);
-        System.out.println(bean1.getMessage());
+        HelloWorld helloWorldBean1 =
+                applicationContext.getBean(HelloWorld.class);
+//        System.out.println(helloWorldBean1.getMessage());
+        HelloWorld helloWorldBean2 =
+                applicationContext.getBean(HelloWorld.class);
 
-        System.out.println(bean == bean1);
+        System.out.print("Comparing of HelloWorld: " );
+        System.out.println(helloWorldBean1 == helloWorldBean2);
 
 
-        // Cat
-        ApplicationContext context1 =
-                new AnnotationConfigApplicationContext(AppConfig.class);
-        Cat bean2 = context1.getBean("cat", Cat.class);
+        Cat catBean1 = applicationContext.getBean(Cat.class);
+        Cat catBean2 = applicationContext.getBean(Cat.class);
 
-        ApplicationContext context2 =
-                new AnnotationConfigApplicationContext(AppConfig.class);
-        Cat bean3 = context2.getBean("cat", Cat.class);
-
-        System.out.println(bean2 == bean3);
+        System.out.print("Comparing of Cat: " );
+        System.out.println(catBean1 == catBean2);
     }
 }
